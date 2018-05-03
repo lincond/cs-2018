@@ -1,0 +1,7 @@
+[X] testes de unidade;
+[X] documentação realizada em conformidade com JSDOC 3 (http://usejsdoc.org/);
+[X] o algoritmo deverá ser implementado como método de uma classe;
+[X] a classe será fornecida em um arquivo no qual deve estar presente apenas a classe;
+[X] o uso da classe deve ocorrer por  meio de “import”;
+[ ] classe deverá ser disponibilizada publicamente no repositório NPM;
+[X] uma aplicação via linha de comandos que permite fornecer uma data (entrada padrão) e que produz, na saída padrão, o dia da semana correspondente à data, em tempo, essa aplicação deve fazer uso da classe disponibilizada publicamente.
