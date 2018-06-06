@@ -15,5 +15,8 @@
     "babel-preset-env": "^1.6.1",
     "babelify": "^8.0.0",
     "qunit": "^2.6.0"
+  },
+  "dependencies": {
+    "dayofweek-lincon": "^1.0.0"
   }
 }
