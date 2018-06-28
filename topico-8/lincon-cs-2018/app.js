@@ -1,4 +1,11 @@
 /**
+ * Módulo de matemática de construção de software
+ * @module lincond/cs2018-math
+ * @author Lincon Dias
+ * @version 0.0.1
+ */
+
+/**
  * Calcula o fatorial de um número
  * @param {number} n número inteiro maior do que 0
  */
@@ -93,7 +100,13 @@ function LogaritmoNatural(n, k) {
     return e
 }
 
-//TODO: documentação
+/**
+ * A razão áurea pode ser obtida através da aplicação de um processo iniciado com
+ * dois inteiros positivos.
+ * @param {number} x fator A que será utilizado nos cálculos
+ * @param {number} y fator B que será utilizado nos cálculos
+ * @param {number} k precisão do resultado
+ */
 function RazaoAurea(x, y, k) {
     if ( x < 0 || x > y || k < 1)
         return undefined
@@ -155,29 +168,51 @@ function Primo(n) {
     return true
 }
 
-//TODO: documentação
+/**
+ * O Crivo de Eratóstenes é um método bastante prático para encontrar os primos de 2 até um valor limite
+ * @param {number[]} a array com n posições
+ * @param {number} n número de posições
+ */
 function CrivoEratostenes(a, n){
-    // Exige: n > 1 e a[i] = 0 para todo 2 ≤ i ≤ n
-    // i = 2
-    // se a[i] = 0 então
-    // a[multiplomult] = 1
+    if ( n < 1 )
+        return undefined
+
+    let i,
+        limite = Math.abs(Math.sqrt(n))
     
-    // fim se 
+    for (i = 2; i <= limite; i++) {
+        if ( a[i] == 0 ) {
+            let multiplo = i + i
+            while (multiplo <= n ){
+                a[multiplo] = 1
+                multiplo += i
+            }
+        }
+    }
 }
 
-//TODO: Documentação
-function Horner() {}
-// Horner(x, g, ag, ag-1, ..., a0) Algoritmo 18
-// Exige: 1 ≤ g
-// p = ag 1
-// i = g - 1 2
-// enquanto 0 ≤ i faça 3
-// p = p * x + ai 4
-// i = i - 1 5
-// fim enquanto 6
-// retorne p
+/**
+ * Algoritmo eficiente para a avaliação dos polinômios na forma monômial
+ * @param {number} x valor de x
+ * @param {number} g grau do polinomio
+ * @param {number[]} a valores dos coeficientes
+ */
+function Horner() {
+    if ( arguments.length < 3 )
+        return undefined
+    let x = arguments[0],
+        g = arguments[1],
+        p = arguments[2]
+    
+    if ( g < 1 )
+        return undefined
 
+    for (let i = g - 1; i >= 0; i--) {
+        p = p * x + arguments[i]
+    }
 
+    return p
+}
 
 /**
  * Calcula o MDC entre dois termos utilizando o resto da divisão
@@ -262,12 +297,12 @@ function CPF(d) {
     if (d.length != 11)
         return false
 
-    let j = parseInt(d[1]) + 2 * parseInt(d[2]) + 3 * parseInt(d[3]) + 4 * d[4] + 5 * parseInt(d[5]) + 6 * parseInt(d[6]) + 7 * parseInt(d[7]) + 8 * parseInt(d[8]) + 9 * parseInt(d[9])
-    let k = parseInt(d[2]) + 2 * parseInt(d[3]) + 3 * parseInt(d[4]) + 4 * d[5] + 5 * parseInt(d[6]) + 6 * parseInt(d[7]) + 7 * parseInt(d[8]) + 8 * parseInt(d[9]) + 9 * parseInt(d[10])
+    let j = parseInt(d[0]) + (2 * parseInt(d[1])) + (3 * parseInt(d[2])) + (4 * parseInt(d[3])) + (5 * parseInt(d[4])) + (6 * parseInt(d[5])) + (7 * parseInt(d[6])) + (8 * parseInt(d[7])) + (9 * parseInt(d[8]))
+    let k = parseInt(d[1]) + (2 * parseInt(d[2])) + (3 * parseInt(d[3])) + (4 * parseInt(d[4])) + (5 * parseInt(d[5])) + (6 * parseInt(d[6])) + (7 * parseInt(d[7])) + (8 * parseInt(d[8])) + (9 * parseInt(d[9]))
     let dj = Mod(Mod(j, 11), 10)
     let dk = Mod(Mod(k, 11), 10)
-    console.log(dj, dk)
-    return dj == d[10] && dk == d[11]
+
+    return dj == parseInt(d[9]) && dk == parseInt(d[10])
 }
 
 /**
@@ -279,17 +314,19 @@ function CPF2(d) {
         return false
 
     let c = 8
-    let p = parseInt(d[9])
-    let s = parseInt(d[9])
+    let p = parseInt(d[8])
+    let s = parseInt(d[8])
 
-    for (c = 8; c >= 1; c--) {
-        p = p + parseInt(d[c])
-        s = s + p
+    for (c = 8; c >= 0; c--) {
+        p += parseInt(d[c])
+        s += p
     }
     let j = Mod(Mod(s, 11), 10)
-    let k = Mod(Mod((9 * parseInt(d[10]) + (s - p)), 11), 10)
-    console.log(j, k)
-    return j == parseInt(d[10]) && k == parseInt(d[11])
+    let k = Mod(Mod((9 * parseInt(d[9]) + (s - p)), 11), 10)
+
+    console.log(j, parseInt(d[9]), k, parseInt(d[10]))
+
+    return j == parseInt(d[9]) && k == parseInt(d[10])
 }
 
 module.exports = {

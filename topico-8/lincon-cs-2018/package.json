@@ -1,13 +1,13 @@
 {
-  "name": "topico-8",
-  "version": "1.0.0",
+  "name": "lincon-cs-2018",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "qunit"
   },
   "keywords": [],
-  "author": "",
+  "author": "Lincon Dias",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^4.19.1",

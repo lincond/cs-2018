@@ -39,8 +39,16 @@ QUnit.test('Fibonacci 10', assert => assert.equal(lib.Fibonacci(10), 55))
 QUnit.test('Fibonacci 25', assert => assert.equal(lib.Fibonacci(25), 75025))
 QUnit.test('Fibonacci 50', assert => assert.equal(lib.Fibonacci(50), 12586269025))
 
-QUnit.test('CPF inválido tamanho', assert => assert.equal(lib.CPF('026464561'), false))
-// QUnit.test('CPF válido', assert => assert.equal(lib.CPF('02646456182'), true))
+QUnit.test('Crivo Eratostenes 100', assert => {
+    let n = 100,
+        arr = new Array(n)
+    arr.fill(0, 0, n)
+    lib.CrivoEratostenes(arr, n)
+    assert.equal(arr[n-1], 1)
+})
 
-QUnit.test('CPF2 inválido tamanho', assert => assert.equal(lib.CPF2('026464561'), false))
-// QUnit.test('CPF válido', assert => assert.equal(lib.CPF2('02646456182'), true))
+QUnit.test('CPF inválido tamanho', assert => assert.equal(lib.CPF('111111111'), false))
+QUnit.test('CPF válido', assert => assert.equal(lib.CPF('34092983042'), true))
+
+QUnit.test('CPF2 inválido tamanho', assert => assert.equal(lib.CPF2('111111111'), false))
+QUnit.test('CPF2 válido', assert => assert.equal(lib.CPF2('34092983042'), true))

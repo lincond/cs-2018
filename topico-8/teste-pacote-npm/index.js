@@ -1,0 +1,16 @@
+const lib = require('lincon-cs-2018')
+
+console.log('Demonstração de alguma funções da biblioteca lincon-cs-2018')
+console.log('')
+console.log('Fatorial ', lib.Fatorial(5))
+console.log('Produto ',lib.Produto(2, 2))
+console.log('Potencia', lib.Potencia(3, 2))
+console.log('Primo', lib.Primo(2))
+console.log('MDC', lib.MDC(81, 54))
+console.log('Fibonacci', lib.Fibonacci(10))
+let n = 100,
+    arr = new Array(n)
+arr.fill(0, 0, n)
+lib.CrivoEratostenes(arr, n)
+console.log('CrivoEratostenes', arr[n-1])
+console.log('CPF', lib.CPF('34092983042'))
